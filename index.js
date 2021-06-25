@@ -48,3 +48,13 @@ document.getElementById("mint").addEventListener("click", () => {
     console.log("transactionHash", hash)
   })
 })
+
+document.getElementById("transfer").addEventListener("click", () => {
+  // 转账给某个钱包地址
+  erc20Contract.methods.transfer(accounts.platformWalletAddress.address, web3.utils.toWei('100000', 'ether')).send({
+    from: metamaskAccounts[0]
+  })
+  .on('transactionHash', hash => {
+    console.log("transactionHash", hash)
+  })
+})
